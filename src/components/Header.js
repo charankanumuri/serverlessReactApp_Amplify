@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import menuLinksData from './data/menu_links.json'
-
+import { PROD_API_URL } from "./constants";
 const Header = () => {
   const [menuLinksData, setMenuLinksData] = useState([]);
 
   const loadMenuLinksData = async () => {
     // Query the API Gateway
-    const resp = await fetch(
-      "https://xva3b5tfz0.execute-api.us-west-1.amazonaws.com/Production/menuLinks"
-    );
+    const resp = await fetch(`${PROD_API_URL}menuLinks`);
     let jsonData = await resp.json();
 
     // Assign response data to our state variable

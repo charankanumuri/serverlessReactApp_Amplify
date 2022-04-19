@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import galleryImagesData from './data/gallery_images.json'
-
+import { PROD_API_URL } from "./constants";
 const Welcome = () => {
   const [galleryImagesData, setGalleryImagesData] = useState([]);
 
   const loadGalleryImagesData = async () => {
     // Query the API Gateway
-    const resp = await fetch(
-      "https://xva3b5tfz0.execute-api.us-west-1.amazonaws.com/Production/galleryImages"
-    );
+    const resp = await fetch(`${PROD_API_URL}galleryImages`);
     let jsonData = await resp.json();
 
     // Assign response data to our state variable

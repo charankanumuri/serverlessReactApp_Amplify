@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 // import accessibilityData from "./data/accessibilities.json";
 // import servicesData from "./data/services.json";
-
+import { PROD_API_URL } from "./constants";
 const HotelInfo = () => {
   const [servicesData, setServicesData] = useState([]);
   const [accessibilityData, setAccessibilityData] = useState([]);
 
   const loadServicesData = async () => {
     // Query the API Gateway
-    const resp = await fetch(
-      "https://xva3b5tfz0.execute-api.us-west-1.amazonaws.com/Production/services"
-    );
+    const resp = await fetch(`${PROD_API_URL}services`);
     let jsonData = await resp.json();
 
     // Assign response data to our state variable
@@ -19,9 +17,7 @@ const HotelInfo = () => {
 
   const loadAccessibilityData = async () => {
     // Query the API Gateway
-    const resp = await fetch(
-      "https://xva3b5tfz0.execute-api.us-west-1.amazonaws.com/Production/accessibilities"
-    );
+    const resp = await fetch(`${PROD_API_URL}accessibilities`);
     let jsonData = await resp.json();
 
     // Assign response data to our state variable
